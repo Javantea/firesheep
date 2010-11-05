@@ -30,7 +30,8 @@ LinuxPlatform::LinuxPlatform(vector<string> argv) : UnixPlatform(argv) { }
 
 bool LinuxPlatform::run_privileged() {
 	const char *path = this->path().c_str();
-	execl("/usr/bin/pkexec","pkexec",path,"--fix-permissions",NULL);
+	printf("yawn %s\n", path);
+	execl("/usr/bin/sudo","sudo",path,"--fix-permissions",NULL);
 	return true;
 }
 

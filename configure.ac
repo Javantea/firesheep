@@ -39,6 +39,9 @@ case "$host_os" in
 	linux*)
 		TARGET=LINUX
 	;;
+	*)
+		TARGET=LINUX
+	;;	
 esac
 
 AM_CONDITIONAL(PLATFORM_WIN32, test x$TARGET = xWIN32)
@@ -93,10 +96,11 @@ case "$build_cpu" in
 	i[[3456]]86*)
 		build_arch="x86"
 		build_target="-march=i386"
+		CFLAGS="$CFLAGS -m32"
 		;;
 	amd64*|x86_64*)
 		build_arch="x86_64"
-		build_target="-march=amd64"
+		build_target="-march=k8"
 		;;
 esac
 
